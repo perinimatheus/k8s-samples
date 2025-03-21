@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: meu-statefulset
+spec:
+  replicas: 3
+  serviceName: "meu-servico"
+  selector:
+    matchLabels:
+      app: meu-app
+  template:
+    metadata:
+      labels:
+        app: meu-app
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
