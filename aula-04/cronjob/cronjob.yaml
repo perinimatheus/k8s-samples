@@ -1,18 +1,18 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: meu-cronjob
+  name: hello-cron
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/1 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-            - name: meu-container
+            - name: hello
               image: busybox
               args:
                 - /bin/sh
                 - -c
-                - echo "Executando CronJob a cada 5 minutos"
+                - date; echo "Rodando tarefa agendada!"
           restartPolicy: OnFailure
